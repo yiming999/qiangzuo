@@ -411,7 +411,7 @@ def date_if(prefer_sit, driver):
     if times_roll and len(times_roll) > 0:
         time_labels = times_roll[0].find_elements(By.TAG_NAME, "label")
         time_texts = [label.text for label in time_labels]
-        if all(time in full_day_times for time in get_time_range(full_day_times, "15:00", "21:00")):
+        if all(time in full_day_times for time in get_time_range(full_day_times, "16:00", "22:00")):
             day_type = 3
             return prefer_sit, day_type, driver  # 改进点  # 找到全天可预约的座位，直接返回座位号
         # 检查是否全天可预约
@@ -470,7 +470,7 @@ def choose_it(driver, sit_avilable, idx, reading_room, day_type, max_attempts=50
     返回:
     bool: 预约是否成功
     """
-    dir_time = {3: [['15:00', '21:00'], ['15:00', '21:00']],
+    dir_time = {3: [['16:00', '22:00'], ['16:00', '22:00']],
                 2: [['14:00', '18:00'], ['18:00', '22:00']]}
     start_time = dir_time[day_type][idx][0]
     end_time = dir_time[day_type][idx][1]
@@ -772,7 +772,7 @@ def date_whether(seat_dict, driver):
     found_full_day = False
     found_half_day = False
     # print(seat_dict)
-    random.seed(int("xxxxxxxxxx"))
+    random.seed(int("4032330470"))
     shuffled_keys = list(seat_dict.keys())
     random.shuffle(shuffled_keys)
     # 定义需要检查的时间段
@@ -798,7 +798,7 @@ def date_whether(seat_dict, driver):
                     time_texts = [label.text for label in time_labels]
 
                     if all(time in time_texts for time in
-                           get_time_range(full_day_times, "15:00", "21:00")):
+                           get_time_range(full_day_times, "16:00", "22:00")):
                         print(f"找到全天可预约座位: {i}")
                         found_full_day = True
                         day_type = 3
@@ -964,7 +964,7 @@ def prefer_whether(account, password, prefer_sit, reading_room, options):
                 time_labels = times_roll[0].find_elements(By.TAG_NAME, "label")
                 time_texts = [label.text for label in time_labels]
                 if all(time in time_texts for time in
-                       get_time_range(full_day_times, "15:00", "21:00")):
+                       get_time_range(full_day_times, "16:00", "22:00")):
                     print(f"偏好座位{prefer_sit}全天可约")
                     found_full_day = True
                     # driver.quit()。
@@ -1155,11 +1155,11 @@ import shutil
 def main():
     """主函数：循环登录多个账号并执行操作"""
     account_password4 = {
-        "xxxxxxxxxx": "000000",
-        "xxxxxxxxxx": "000000"
+        "4032330470": "000000",
+        "4032330470": "000000"
     }
     sit_avilable, day_type = None, None
-    users = {"自定义": [account_password4, "三楼智慧研修空间", "99"]}
+    users = {"自定义": [account_password4, "三楼智慧研修空间", "153"]}
     user = "自定义"
     total_accounts = list(users[user][0].items())
     reading_room = users[user][1]
