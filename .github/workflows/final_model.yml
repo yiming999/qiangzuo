@@ -2,7 +2,7 @@ name: Run Script Daily at 6:00 seat_v6
 on:
   schedule:
     # 北京时间 6:00 = UTC 时间 22:00（前一天）
-    - cron: '40 21 * * *'
+    - cron: '55 20 * * *'
   workflow_dispatch:
 jobs:
   run-script:
